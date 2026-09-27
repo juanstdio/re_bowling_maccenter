@@ -9,7 +9,7 @@
 This project is not a new, isolated activity. It is part of a community effort to preserve old bowling-center software.
 
 - **The disk image** with the folder `BOLICHE` (and the file `BOL.EXE` inside it) was shared on Archive.org by **[@Tipitochen](https://www.youtube.com/@tipitochen)**. He obtained the terminals from the Mac Center bowling center. Mac Center is a Paysandú Shopping mall, in Uruguay. This means the software in this project ran on real hardware, at a real location.
-- **The software on the Disk image** appears to be provided by a Brazilian company called KOPP. Today, according to their [company website](kopp.com.br) they do not provide bowling services nor maintenance for it
+- **The software on the Disk image** appears to be provided by a Brazilian company called KOPP. Today, according to their **[company website](https://kopp.com.br)** they do not provide bowling services nor maintenance for it
 
 We extracted the files from a virtual machine that was built from this disk image. Then examined the configuration files (`BOLICHE.INI` and `GLINK.CFG`). After this, with a disassembled `BOL.EXE`, we found the real communication protocol (packet format, checksum, commands, and port speeds), and wrote the Python controller that emulates the sensor board.
 
