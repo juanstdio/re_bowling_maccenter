@@ -1,0 +1,278 @@
+Extractos de BOL.EXE; offsets relativos al objeto de código.
+
+  00003760: 68 20 00 00 00     push        20h
+  00003765: E8 A2 97 02 00     call        0002CF0C
+  0000376A: 53                 push        ebx
+  0000376B: 51                 push        ecx
+  0000376C: 52                 push        edx
+  0000376D: 83 EC 10           sub         esp,10h
+  00003770: 31 D2              xor         edx,edx
+  00003772: B8 05 00 00 00     mov         eax,5
+  00003777: E8 71 A7 02 00     call        0002DEED
+  0000377C: B8 FD 02 00 00     mov         eax,2FDh
+  00003781: E8 CC A7 02 00     call        0002DF52
+  00003786: A8 01              test        al,1
+  00003788: 0F 84 D4 00 00 00  je          00003862
+  0000378E: 30 DB              xor         bl,bl
+  00003790: 89 D0              mov         eax,edx
+  00003792: 42                 inc         edx
+  00003793: 3D 30 75 00 00     cmp         eax,7530h
+  00003798: 0F 8D C4 00 00 00  jge         00003862
+  0000379E: B8 FD 02 00 00     mov         eax,2FDh
+  000037A3: E8 AA A7 02 00     call        0002DF52
+  000037A8: A8 01              test        al,1
+  000037AA: 74 E4              je          00003790
+  000037AC: B8 F8 02 00 00     mov         eax,2F8h
+  000037B1: E8 9C A7 02 00     call        0002DF52
+  000037B6: 88 C2              mov         dl,al
+  000037B8: 31 C9              xor         ecx,ecx
+  000037BA: 88 C1              mov         cl,al
+  000037BC: 83 F9 1B           cmp         ecx,1Bh
+  000037BF: 75 06              jne         000037C7
+  000037C1: 30 FF              xor         bh,bh
+  000037C3: 30 DB              xor         bl,bl
+  000037C5: EB 07              jmp         000037CE
+  000037C7: 83 F9 04           cmp         ecx,4
+  000037CA: 74 02              je          000037CE
+  000037CC: 00 C7              add         bh,al
+  000037CE: 31 C0              xor         eax,eax
+  000037D0: 88 D8              mov         al,bl
+  000037D2: 88 14 04           mov         byte ptr [esp+eax],dl
+  000037D5: 31 C0              xor         eax,eax
+  000037D7: 88 D0              mov         al,dl
+  000037D9: 83 F8 04           cmp         eax,4
+  000037DC: 75 6E              jne         0000384C
+  000037DE: 31 C0              xor         eax,eax
+  000037E0: 8A 44 24 01        mov         al,byte ptr [esp+1]
+  000037E4: 3D 91 00 00 00     cmp         eax,91h
+  000037E9: 0F 85 73 00 00 00  jne         00003862
+  000037EF: F6 C7 7F           test        bh,7Fh
+  000037F2: 0F 85 6A 00 00 00  jne         00003862
+  000037F8: C6 05 6A B0 01 00  mov         byte ptr ds:[0001B06Ah],1
+            01
+  000037FF: 31 D2              xor         edx,edx
+  00003801: 8A 04 14           mov         al,byte ptr [esp+edx]
+  00003804: 88 82 70 B6 00 00  mov         byte ptr [edx+0000B670h],al
+  0000380A: 42                 inc         edx
+  0000380B: 83 FA 0F           cmp         edx,0Fh
+  0000380E: 72 F1              jb          00003801
+  00003810: A0 75 B6 00 00     mov         al,byte ptr ds:[0000B675h]
+  00003815: 24 01              and         al,1
+  00003817: A2 A4 B0 01 00     mov         byte ptr ds:[0001B0A4h],al
+  0000381C: A0 75 B6 00 00     mov         al,byte ptr ds:[0000B675h]
+  00003821: 24 08              and         al,8
+  00003823: A2 A5 B0 01 00     mov         byte ptr ds:[0001B0A5h],al
+  00003828: F6 05 75 B6 00 00  test        byte ptr ds:[0000B675h],2
+            02
+  0000382F: 75 04              jne         00003835
+  00003831: B0 01              mov         al,1
+  00003833: EB 02              jmp         00003837
+  00003835: 30 C0              xor         al,al
+  00003837: A2 6B B0 01 00     mov         byte ptr ds:[0001B06Bh],al
+  0000383C: A0 76 B6 00 00     mov         al,byte ptr ds:[0000B676h]
+  00003841: 24 01              and         al,1
+  00003843: A2 6D B0 01 00     mov         byte ptr ds:[0001B06Dh],al
+  00003848: B0 01              mov         al,1
+  0000384A: EB 18              jmp         00003864
+  0000384C: FE C3              inc         bl
+  0000384E: 31 C0              xor         eax,eax
+  00003850: 88 D8              mov         al,bl
+  00003852: 83 F8 0F           cmp         eax,0Fh
+  00003855: 72 04              jb          0000385B
+  00003857: 30 D8              xor         al,bl
+  00003859: EB 09              jmp         00003864
+  0000385B: 31 D2              xor         edx,edx
+  0000385D: E9 2E FF FF FF     jmp         00003790
+  00003862: 30 C0              xor         al,al
+  00003864: 83 C4 10           add         esp,10h
+  00003867: 5A                 pop         edx
+  00003868: 59                 pop         ecx
+  00003869: 5B                 pop         ebx
+  0000386A: C3                 ret
+  00005F2A: 68 04 00 00 00     push        4
+  00005F2F: E8 D8 6F 02 00     call        0002CF0C
+  00005F34: 83 3D 18 BA 00 00  cmp         dword ptr ds:[0000BA18h],1
+            01
+  00005F3B: 75 09              jne         00005F46
+  00005F3D: 80 0D A2 B7 00 00  or          byte ptr ds:[0000B7A2h],1
+            01
+  00005F44: EB 07              jmp         00005F4D
+  00005F46: 80 25 A2 B7 00 00  and         byte ptr ds:[0000B7A2h],0FEh
+            FE
+  00005F4D: 83 3D 0C BA 00 00  cmp         dword ptr ds:[0000BA0Ch],1
+            01
+  00005F54: 75 09              jne         00005F5F
+  00005F56: 80 0D A2 B7 00 00  or          byte ptr ds:[0000B7A2h],2
+            02
+  00005F5D: EB 07              jmp         00005F66
+  00005F5F: 80 25 A2 B7 00 00  and         byte ptr ds:[0000B7A2h],0FDh
+            FD
+  00005F66: 83 3D 1C BA 00 00  cmp         dword ptr ds:[0000BA1Ch],1
+            01
+  00005F6D: 75 09              jne         00005F78
+  00005F6F: 80 0D A2 B7 00 00  or          byte ptr ds:[0000B7A2h],4
+            04
+  00005F76: EB 07              jmp         00005F7F
+  00005F78: 80 25 A2 B7 00 00  and         byte ptr ds:[0000B7A2h],0FBh
+            FB
+  00005F7F: 83 3D 04 BA 00 00  cmp         dword ptr ds:[0000BA04h],1
+            01
+  00005F86: 75 09              jne         00005F91
+  00005F88: 80 0D A2 B7 00 00  or          byte ptr ds:[0000B7A2h],8
+            08
+  00005F8F: EB 07              jmp         00005F98
+  00005F91: 80 25 A2 B7 00 00  and         byte ptr ds:[0000B7A2h],0F7h
+            F7
+  00005F98: 83 3D 00 BA 00 00  cmp         dword ptr ds:[0000BA00h],1
+            01
+  00005F9F: 75 09              jne         00005FAA
+  00005FA1: 80 0D A2 B7 00 00  or          byte ptr ds:[0000B7A2h],10h
+            10
+  00005FA8: EB 07              jmp         00005FB1
+  00005FAA: 80 25 A2 B7 00 00  and         byte ptr ds:[0000B7A2h],0EFh
+            EF
+  00005FB1: 83 3D 10 BA 00 00  cmp         dword ptr ds:[0000BA10h],1
+            01
+  00005FB8: 75 09              jne         00005FC3
+  00005FBA: 80 0D A3 B7 00 00  or          byte ptr ds:[0000B7A3h],1
+            01
+  00005FC1: EB 07              jmp         00005FCA
+  00005FC3: 80 25 A3 B7 00 00  and         byte ptr ds:[0000B7A3h],0FEh
+            FE
+  00005FCA: 83 3D 08 BA 00 00  cmp         dword ptr ds:[0000BA08h],1
+            01
+  00005FD1: 75 09              jne         00005FDC
+  00005FD3: 80 0D A3 B7 00 00  or          byte ptr ds:[0000B7A3h],2
+            02
+  00005FDA: EB 07              jmp         00005FE3
+  00005FDC: 80 25 A3 B7 00 00  and         byte ptr ds:[0000B7A3h],0FDh
+            FD
+  00005FE3: 83 3D 14 BA 00 00  cmp         dword ptr ds:[0000BA14h],1
+            01
+  00005FEA: 75 09              jne         00005FF5
+  00005FEC: 80 0D A3 B7 00 00  or          byte ptr ds:[0000B7A3h],8
+            08
+  00005FF3: EB 07              jmp         00005FFC
+  00005FF5: 80 25 A3 B7 00 00  and         byte ptr ds:[0000B7A3h],0F7h
+            F7
+  00005FFC: 83 3D 20 BA 00 00  cmp         dword ptr ds:[0000BA20h],1
+            01
+  00006003: 75 09              jne         0000600E
+  00006005: 80 0D A3 B7 00 00  or          byte ptr ds:[0000B7A3h],4
+            04
+  0000600C: EB 07              jmp         00006015
+  0000600E: 80 25 A3 B7 00 00  and         byte ptr ds:[0000B7A3h],0FBh
+            FB
+  00006015: 83 3D 24 BA 00 00  cmp         dword ptr ds:[0000BA24h],1
+            01
+  0000601C: 75 09              jne         00006027
+  0000601E: 80 0D A3 B7 00 00  or          byte ptr ds:[0000B7A3h],10h
+            10
+  00006025: EB 07              jmp         0000602E
+  00006027: 80 25 A3 B7 00 00  and         byte ptr ds:[0000B7A3h],0EFh
+            EF
+  0000602E: C6 05 80 B0 01 00  mov         byte ptr ds:[0001B080h],1
+            01
+  00006035: C3                 ret
+  00019E6E: A0 73 B6 00 00     mov         al,byte ptr ds:[0000B673h]
+  00019E73: 24 20              and         al,20h
+  00019E75: 25 FF 00 00 00     and         eax,0FFh
+  00019E7A: C1 F8 05           sar         eax,5
+  00019E7D: 85 C0              test        eax,eax
+  00019E7F: 75 10              jne         00019E91
+  00019E81: A0 EC B1 01 00     mov         al,byte ptr ds:[0001B1ECh]
+  00019E86: 85 C0              test        eax,eax
+  00019E88: 75 07              jne         00019E91
+  00019E8A: C6 05 EC B1 01 00  mov         byte ptr ds:[0001B1ECh],1
+            01
+  00019E91: A0 75 B6 00 00     mov         al,byte ptr ds:[0000B675h]
+  00019E96: 24 01              and         al,1
+  00019E98: 3C 01              cmp         al,1
+  00019E9A: 75 13              jne         00019EAF
+  00019E9C: 31 C0              xor         eax,eax
+  00019E9E: A0 EC B1 01 00     mov         al,byte ptr ds:[0001B1ECh]
+  00019EA3: 83 F8 01           cmp         eax,1
+  00019EA6: 75 07              jne         00019EAF
+  00019EA8: C6 05 EC B1 01 00  mov         byte ptr ds:[0001B1ECh],2
+            02
+  00019EAF: A0 73 B6 00 00     mov         al,byte ptr ds:[0000B673h]
+  00019EB4: 24 20              and         al,20h
+  00019EB6: 25 FF 00 00 00     and         eax,0FFh
+  00019EBB: C1 F8 05           sar         eax,5
+  00019EBE: 83 F8 01           cmp         eax,1
+  00019EC1: 75 37              jne         00019EFA
+  00019EC3: 31 C0              xor         eax,eax
+  00019EC5: A0 EC B1 01 00     mov         al,byte ptr ds:[0001B1ECh]
+  00019ECA: 83 F8 03           cmp         eax,3
+  00019ECD: 75 2B              jne         00019EFA
+  00019ECF: 30 C9              xor         cl,cl
+  00019ED1: 88 0D EC B1 01 00  mov         byte ptr ds:[0001B1ECh],cl
+  00019ED7: 83 3D 6C AF 01 00  cmp         dword ptr ds:[0001AF6Ch],0
+            00
+  00019EDE: 75 1A              jne         00019EFA
+  00019EE0: B5 80              mov         ch,80h
+  00019EE2: 88 2D A2 B7 00 00  mov         byte ptr ds:[0000B7A2h],ch
+  00019EE8: 88 2D A3 B7 00 00  mov         byte ptr ds:[0000B7A3h],ch
+  00019EEE: 88 2D A4 B7 00 00  mov         byte ptr ds:[0000B7A4h],ch
+  00019EF4: 88 2D A5 B7 00 00  mov         byte ptr ds:[0000B7A5h],ch
+  00019EFA: 31 C0              xor         eax,eax
+  00019EFC: A0 EC B1 01 00     mov         al,byte ptr ds:[0001B1ECh]
+  00019F01: 83 F8 02           cmp         eax,2
+  00019F04: 75 07              jne         00019F0D
+  00019F06: 83 7C 24 18 00     cmp         dword ptr [esp+18h],0
+  00019F0B: 74 69              je          00019F76
+  0001A2EC: 30 C9              xor         cl,cl
+  0001A2EE: 88 0D F1 B1 01 00  mov         byte ptr ds:[0001B1F1h],cl
+  0001A2F4: 83 3D 0C B1 01 00  cmp         dword ptr ds:[0001B10Ch],1
+            01
+  0001A2FB: 74 05              je          0001A302
+  0001A2FD: E8 A8 35 00 00     call        0001D8AA
+  0001A302: C6 05 EC B1 01 00  mov         byte ptr ds:[0001B1ECh],3
+            03
+  0001D8AA: 68 20 00 00 00     push        20h
+  0001D8AF: E8 58 F6 00 00     call        0002CF0C
+  0001D8B4: 53                 push        ebx
+  0001D8B5: 51                 push        ecx
+  0001D8B6: 52                 push        edx
+  0001D8B7: 56                 push        esi
+  0001D8B8: 57                 push        edi
+  0001D8B9: 55                 push        ebp
+  0001D8BA: A0 72 B6 00 00     mov         al,byte ptr ds:[0000B672h]
+  0001D8BF: 24 10              and         al,10h
+  0001D8C1: 25 FF 00 00 00     and         eax,0FFh
+  0001D8C6: C1 F8 04           sar         eax,4
+  0001D8C9: 83 F8 01           cmp         eax,1
+  0001D8CC: 0F 85 D3 02 00 00  jne         0001DBA5
+  0001DB06: 83 3D 6C AF 01 00  cmp         dword ptr ds:[0001AF6Ch],0
+            00
+  0001DB0D: 75 60              jne         0001DB6F
+  0001DB0F: 8B 15 70 AF 01 00  mov         edx,dword ptr ds:[0001AF70h]
+  0001DB15: 89 D0              mov         eax,edx
+  0001DB17: C1 E0 02           shl         eax,2
+  0001DB1A: 01 D0              add         eax,edx
+  0001DB1C: C1 E0 03           shl         eax,3
+  0001DB1F: 29 D0              sub         eax,edx
+  0001DB21: C1 E0 03           shl         eax,3
+  0001DB24: 89 C2              mov         edx,eax
+  0001DB26: C1 E0 03           shl         eax,3
+  0001DB29: 01 C2              add         edx,eax
+  0001DB2B: 8B 0D 68 AF 01 00  mov         ecx,dword ptr ds:[0001AF68h]
+  0001DB31: 89 C8              mov         eax,ecx
+  0001DB33: C1 E0 02           shl         eax,2
+  0001DB36: 29 C8              sub         eax,ecx
+  0001DB38: C1 E0 06           shl         eax,6
+  0001DB3B: 01 D0              add         eax,edx
+  0001DB3D: 83 B8 00 BA 00 00  cmp         dword ptr [eax+0000BA00h],0
+            00
+  0001DB44: 75 29              jne         0001DB6F
+  0001DB46: BB 01 00 00 00     mov         ebx,1
+  0001DB4B: 89 98 00 BA 00 00  mov         dword ptr [eax+0000BA00h],ebx
+  0001DB51: 8B 0D 68 AF 01 00  mov         ecx,dword ptr ds:[0001AF68h]
+  0001DB57: 89 C8              mov         eax,ecx
+  0001DB59: C1 E0 02           shl         eax,2
+  0001DB5C: 29 C8              sub         eax,ecx
+  0001DB5E: C1 E0 02           shl         eax,2
+  0001DB61: 01 C2              add         edx,eax
+  0001DB63: A1 6C AF 01 00     mov         eax,dword ptr ds:[0001AF6Ch]
+  0001DB68: 01 9C 82 C0 C3 00  add         dword ptr [edx+eax*4+0000C3C0h],ebx
+            00

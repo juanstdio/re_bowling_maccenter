@@ -1,0 +1,22 @@
+2026-09-23 — Windows / Python 3.11 / Tk 8.6
+
+12 pruebas unittest aprobadas (pruebas.py + pruebas_tiradas.py).
+Incluyen:
+- Protocolo, checksum, fragmentación, reconexión y envío espaciado.
+- Las 1024 combinaciones de los diez bits de sensores.
+- Secuencia de cinco pinos con vectores constantes.
+- Sin sondeos no se inicia una tirada; sin consultas no avanza.
+- Acumulación de segunda bola, rechazo de pinos repetidos y rearme.
+- Cero y diez pinos, cancelación y desconexión.
+- Ciclo completo por TCP con cliente local, saludo y cuatro fases.
+
+Integración Tkinter real con cliente TCP local: aprobada.
+Se verificaron inicio, bloqueo sin sondeos, botón de selección 5,
+envío de ciclo, selección de restantes, cancelar, nuevo rack,
+desconexión y cierre de hilos.
+
+Compilación sintáctica de los archivos Python y ZIP: verificados.
+
+NO se ejecutó BOL.EXE ni VirtualBox. Los clientes de prueba generan
+sondeos previstos por el modelo. No se verificó que cinco pinos
+aparezcan en el marcador, ni partida completa, ni mecánica real.

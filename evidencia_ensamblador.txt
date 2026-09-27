@@ -1,0 +1,640 @@
+EVIDENCIA LOCAL - BOL.EXE 3.0.0.1.3
+Offsets relativos al primer objeto LE; no direcciones absolutas en RAM.
+Origen: copia leida sin ejecutar. Desensamblado x86 de 32 bits con DUMPBIN.
+
+--- Inicializacion de COM1/COM2: codigo 006BC..006FB ---
+  000006BC: 6A 08              push        8
+  000006BE: B9 02 00 00 00     mov         ecx,2
+  000006C3: 31 DB              xor         ebx,ebx
+  000006C5: BA 80 25 00 00     mov         edx,2580h
+  000006CA: B8 F8 03 00 00     mov         eax,3F8h
+  000006CF: E8 40 2D 00 00     call        00003414
+  000006D4: 6A 08              push        8
+  000006D6: B9 02 00 00 00     mov         ecx,2
+  000006DB: 31 DB              xor         ebx,ebx
+  000006DD: BA 00 4B 00 00     mov         edx,4B00h
+  000006E2: B8 F8 02 00 00     mov         eax,2F8h
+  000006E7: E8 28 2D 00 00     call        00003414
+  000006EC: E8 68 20 00 00     call        00002759
+  000006F1: B8 F8 03 00 00     mov         eax,3F8h
+  000006F6: E8 D0 20 00 00     call        000027CB
+
+--- Recepcion COM1: codigo 02630..0270C ---
+  00002630: 60                 pushad
+  00002631: 1E                 push        ds
+  00002632: 06                 push        es
+  00002633: 0F A0              push        fs
+  00002635: 0F A8              push        gs
+  00002637: 89 E5              mov         ebp,esp
+  00002639: FC                 cld
+  0000263A: E8 B9 A8 02 00     call        0002CEF8
+  0000263F: FF 05 F8 AF 00 00  inc         dword ptr ds:[0000AFF8h]
+  00002645: E8 02 A9 02 00     call        0002CF4C
+  0000264A: B8 FD 03 00 00     mov         eax,3FDh
+  0000264F: E8 FE B8 02 00     call        0002DF52
+  00002654: A8 01              test        al,1
+  00002656: 0F 84 D5 00 00 00  je          00002731
+  0000265C: B8 F8 03 00 00     mov         eax,3F8h
+  00002661: E8 EC B8 02 00     call        0002DF52
+  00002666: 88 C2              mov         dl,al
+  00002668: 31 C9              xor         ecx,ecx
+  0000266A: 88 C1              mov         cl,al
+  0000266C: 83 F9 1B           cmp         ecx,1Bh
+  0000266F: 75 10              jne         00002681
+  00002671: 30 F6              xor         dh,dh
+  00002673: 88 35 81 AE 00 00  mov         byte ptr ds:[0000AE81h],dh
+  00002679: 88 35 80 AE 00 00  mov         byte ptr ds:[0000AE80h],dh
+  0000267F: EB 0B              jmp         0000268C
+  00002681: 83 F9 04           cmp         ecx,4
+  00002684: 74 06              je          0000268C
+  00002686: 00 05 81 AE 00 00  add         byte ptr ds:[0000AE81h],al
+  0000268C: 31 C0              xor         eax,eax
+  0000268E: A0 80 AE 00 00     mov         al,byte ptr ds:[0000AE80h]
+  00002693: 88 90 88 AE 00 00  mov         byte ptr [eax+0000AE88h],dl
+  00002699: 31 C9              xor         ecx,ecx
+  0000269B: 88 D1              mov         cl,dl
+  0000269D: 83 F9 04           cmp         ecx,4
+  000026A0: 75 6A              jne         0000270C
+  000026A2: 31 D2              xor         edx,edx
+  000026A4: 8A 15 88 AE 00 00  mov         dl,byte ptr ds:[0000AE88h]
+  000026AA: 83 FA 1B           cmp         edx,1Bh
+  000026AD: 75 53              jne         00002702
+  000026AF: F6 05 81 AE 00 00  test        byte ptr ds:[0000AE81h],7Fh
+            7F
+  000026B6: 75 4A              jne         00002702
+  000026B8: 31 D2              xor         edx,edx
+  000026BA: 8A 15 89 AE 00 00  mov         dl,byte ptr ds:[0000AE89h]
+  000026C0: 8B 0D DC AA 01 00  mov         ecx,dword ptr ds:[0001AADCh]
+  000026C6: 83 C1 20           add         ecx,20h
+  000026C9: 39 CA              cmp         edx,ecx
+  000026CB: 75 35              jne         00002702
+  000026CD: 40                 inc         eax
+  000026CE: A3 98 AF 00 00     mov         dword ptr ds:[0000AF98h],eax
+  000026D3: 31 C0              xor         eax,eax
+  000026D5: A0 80 AE 00 00     mov         al,byte ptr ds:[0000AE80h]
+  000026DA: 8A 90 88 AE 00 00  mov         dl,byte ptr [eax+0000AE88h]
+  000026E0: 88 90 A0 B6 00 00  mov         byte ptr [eax+0000B6A0h],dl
+  000026E6: 30 F6              xor         dh,dh
+  000026E8: 88 B0 88 AE 00 00  mov         byte ptr [eax+0000AE88h],dh
+  000026EE: 88 C3              mov         bl,al
+  000026F0: FE CB              dec         bl
+  000026F2: 88 1D 80 AE 00 00  mov         byte ptr ds:[0000AE80h],bl
+  000026F8: 80 FB FF           cmp         bl,0FFh
+  000026FB: 75 D6              jne         000026D3
+  000026FD: E8 8A 12 00 00     call        0000398C
+  00002702: 30 C9              xor         cl,cl
+  00002704: 88 0D 80 AE 00 00  mov         byte ptr ds:[0000AE80h],cl
+  0000270A: EB 25              jmp         00002731
+
+--- Configuracion UART: codigo 03414..034C1 ---
+  00003414: 68 0C 00 00 00     push        0Ch
+  00003419: E8 EE 9A 02 00     call        0002CF0C
+  0000341E: 56                 push        esi
+  0000341F: 83 EC 04           sub         esp,4
+  00003422: 89 C6              mov         esi,eax
+  00003424: 89 0C 24           mov         dword ptr [esp],ecx
+  00003427: 89 D1              mov         ecx,edx
+  00003429: C1 E1 04           shl         ecx,4
+  0000342C: B8 00 20 1C 00     mov         eax,1C2000h
+  00003431: 89 C2              mov         edx,eax
+  00003433: C1 FA 1F           sar         edx,1Fh
+  00003436: F7 F9              idiv        eax,ecx
+  00003438: 89 C1              mov         ecx,eax
+  0000343A: 8D 46 03           lea         eax,[esi+3]
+  0000343D: BA 80 00 00 00     mov         edx,80h
+  00003442: E8 01 AB 02 00     call        0002DF48
+  00003447: 31 D2              xor         edx,edx
+  00003449: 88 CA              mov         dl,cl
+  0000344B: 89 F0              mov         eax,esi
+  0000344D: E8 F6 AA 02 00     call        0002DF48
+  00003452: 31 D2              xor         edx,edx
+  00003454: 88 EA              mov         dl,ch
+  00003456: 8D 46 01           lea         eax,[esi+1]
+  00003459: E8 EA AA 02 00     call        0002DF48
+  0000345E: 8A 44 24 0C        mov         al,byte ptr [esp+0Ch]
+  00003462: 2C 05              sub         al,5
+  00003464: 8A 24 24           mov         ah,byte ptr [esp]
+  00003467: FE CC              dec         ah
+  00003469: C0 E4 02           shl         ah,2
+  0000346C: 08 E0              or          al,ah
+  0000346E: 85 DB              test        ebx,ebx
+  00003470: 74 09              je          0000347B
+  00003472: 0C 08              or          al,8
+  00003474: 88 DC              mov         ah,bl
+  00003476: 80 E4 10           and         ah,10h
+  00003479: 08 E0              or          al,ah
+  0000347B: 24 7F              and         al,7Fh
+  0000347D: 31 D2              xor         edx,edx
+  0000347F: 88 C2              mov         dl,al
+  00003481: 8D 46 03           lea         eax,[esi+3]
+  00003484: E8 BF AA 02 00     call        0002DF48
+  00003489: 8D 4E 04           lea         ecx,[esi+4]
+  0000348C: 89 C8              mov         eax,ecx
+  0000348E: E8 BF AA 02 00     call        0002DF52
+  00003493: 25 EF 00 00 00     and         eax,0EFh
+  00003498: 0C 0B              or          al,0Bh
+  0000349A: 89 C2              mov         edx,eax
+  0000349C: 89 C8              mov         eax,ecx
+  0000349E: E8 A5 AA 02 00     call        0002DF48
+  000034A3: 8D 46 02           lea         eax,[esi+2]
+  000034A6: BA 07 00 00 00     mov         edx,7
+  000034AB: E8 98 AA 02 00     call        0002DF48
+  000034B0: 8D 46 01           lea         eax,[esi+1]
+  000034B3: 31 D2              xor         edx,edx
+  000034B5: E8 8E AA 02 00     call        0002DF48
+  000034BA: 83 C4 04           add         esp,4
+  000034BD: 5E                 pop         esi
+  000034BE: C2 04 00           ret         4
+
+--- Estados COM1: codigo 039BA..03AE8 ---
+  000039BA: 31 C0              xor         eax,eax
+  000039BC: A0 A2 B6 00 00     mov         al,byte ptr ds:[0000B6A2h]
+  000039C1: 3D 81 00 00 00     cmp         eax,81h
+  000039C6: 75 66              jne         00003A2E
+  000039C8: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C3h
+            C3
+  000039CF: 31 C0              xor         eax,eax
+  000039D1: A0 ED B1 01 00     mov         al,byte ptr ds:[0001B1EDh]
+  000039D6: 83 F8 01           cmp         eax,1
+  000039D9: 75 07              jne         000039E2
+  000039DB: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0FCh
+            FC
+  000039E2: 83 3D 30 B1 01 00  cmp         dword ptr ds:[0001B130h],1
+            01
+  000039E9: 75 07              jne         000039F2
+  000039EB: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0D6h
+            D6
+  000039F2: 31 C0              xor         eax,eax
+  000039F4: A0 EF B1 01 00     mov         al,byte ptr ds:[0001B1EFh]
+  000039F9: 83 F8 02           cmp         eax,2
+  000039FC: 75 07              jne         00003A05
+  000039FE: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0ECh
+            EC
+  00003A05: 83 3D 20 B1 01 00  cmp         dword ptr ds:[0001B120h],1
+            01
+  00003A0C: 75 07              jne         00003A15
+  00003A0E: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C6h
+            C6
+  00003A15: 83 3D 20 B1 01 00  cmp         dword ptr ds:[0001B120h],1
+            01
+  00003A1C: 0F 85 69 0D 00 00  jne         0000478B
+  00003A22: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C6h
+            C6
+  00003A29: E9 5D 0D 00 00     jmp         0000478B
+  00003A2E: 3D C0 00 00 00     cmp         eax,0C0h
+  00003A33: 75 16              jne         00003A4B
+  00003A35: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C2h
+            C2
+  00003A3C: C7 05 18 AF 01 00  mov         dword ptr ds:[0001AF18h],2
+            02 00 00 00
+  00003A46: E9 40 0D 00 00     jmp         0000478B
+  00003A4B: 3D 83 00 00 00     cmp         eax,83h
+  00003A50: 75 14              jne         00003A66
+  00003A52: 31 F6              xor         esi,esi
+  00003A54: 89 35 20 B1 01 00  mov         dword ptr ds:[0001B120h],esi
+  00003A5A: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C3h
+            C3
+  00003A61: E9 25 0D 00 00     jmp         0000478B
+  00003A66: 3D 82 00 00 00     cmp         eax,82h
+  00003A6B: 75 45              jne         00003AB2
+  00003A6D: 8B 35 B8 B0 01 00  mov         esi,dword ptr ds:[0001B0B8h]
+  00003A73: 46                 inc         esi
+  00003A74: 89 35 B8 B0 01 00  mov         dword ptr ds:[0001B0B8h],esi
+  00003A7A: 83 FE 01           cmp         esi,1
+  00003A7D: 7E 0A              jle         00003A89
+  00003A7F: 31 D2              xor         edx,edx
+  00003A81: 89 15 18 AF 01 00  mov         dword ptr ds:[0001AF18h],edx
+  00003A87: EB 13              jmp         00003A9C
+  00003A89: 8B 2D 18 AF 01 00  mov         ebp,dword ptr ds:[0001AF18h]
+  00003A8F: 83 FD 01           cmp         ebp,1
+  00003A92: 75 08              jne         00003A9C
+  00003A94: 89 2D B4 B0 01 00  mov         dword ptr ds:[0001B0B4h],ebp
+  00003A9A: EB 0A              jmp         00003AA6
+  00003A9C: C7 05 18 AF 01 00  mov         dword ptr ds:[0001AF18h],1
+            01 00 00 00
+  00003AA6: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C4h
+            C4
+  00003AAD: E9 D9 0C 00 00     jmp         0000478B
+  00003AB2: 3D 84 00 00 00     cmp         eax,84h
+  00003AB7: 75 14              jne         00003ACD
+  00003AB9: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C6h
+            C6
+  00003AC0: 31 C9              xor         ecx,ecx
+  00003AC2: 89 0D B4 B0 01 00  mov         dword ptr ds:[0001B0B4h],ecx
+  00003AC8: E9 BE 0C 00 00     jmp         0000478B
+  00003ACD: 3D 86 00 00 00     cmp         eax,86h
+  00003AD2: 75 14              jne         00003AE8
+  00003AD4: 31 D2              xor         edx,edx
+  00003AD6: 89 15 18 AF 01 00  mov         dword ptr ds:[0001AF18h],edx
+  00003ADC: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0C7h
+            C7
+  00003AE3: E9 A3 0C 00 00     jmp         0000478B
+
+--- Fin nombres: codigo 03BF9..03C23 ---
+  00003BF9: 3D 97 00 00 00     cmp         eax,97h
+  00003BFE: 75 23              jne         00003C23
+  00003C00: C6 05 C2 B7 00 00  mov         byte ptr ds:[0000B7C2h],0E7h
+            E7
+  00003C07: 83 3D B4 B0 01 00  cmp         dword ptr ds:[0001B0B4h],1
+            01
+  00003C0E: 0F 84 77 0B 00 00  je          0000478B
+  00003C14: C7 05 1C AF 01 00  mov         dword ptr ds:[0001AF1Ch],1
+            01 00 00 00
+  00003C1E: E9 68 0B 00 00     jmp         0000478B
+
+--- Checksum y transmision: codigo 0478B..04870 ---
+  0000478B: B3 01              mov         bl,1
+  0000478D: EB 10              jmp         0000479F
+  0000478F: 31 C0              xor         eax,eax
+  00004791: 88 D8              mov         al,bl
+  00004793: 8A 80 C0 B7 00 00  mov         al,byte ptr [eax+0000B7C0h]
+  00004799: 00 44 24 08        add         byte ptr [esp+8],al
+  0000479D: FE C3              inc         bl
+  0000479F: 31 D2              xor         edx,edx
+  000047A1: 88 FA              mov         dl,bh
+  000047A3: 31 C0              xor         eax,eax
+  000047A5: 88 D8              mov         al,bl
+  000047A7: 83 EA 03           sub         edx,3
+  000047AA: 39 D0              cmp         eax,edx
+  000047AC: 7F 12              jg          000047C0
+  000047AE: 80 B8 C0 B7 00 00  cmp         byte ptr [eax+0000B7C0h],0
+            00
+  000047B5: 75 D8              jne         0000478F
+  000047B7: C6 80 C0 B7 00 00  mov         byte ptr [eax+0000B7C0h],30h
+            30
+  000047BE: EB CF              jmp         0000478F
+  000047C0: 8A 54 24 08        mov         dl,byte ptr [esp+8]
+  000047C4: F6 D2              not         dl
+  000047C6: FE C2              inc         dl
+  000047C8: 80 CA 80           or          dl,80h
+  000047CB: 88 54 24 08        mov         byte ptr [esp+8],dl
+  000047CF: 88 90 C0 B7 00 00  mov         byte ptr [eax+0000B7C0h],dl
+  000047D5: FE C3              inc         bl
+  000047D7: 31 C0              xor         eax,eax
+  000047D9: 88 D8              mov         al,bl
+  000047DB: C6 80 C0 B7 00 00  mov         byte ptr [eax+0000B7C0h],4
+            04
+  000047E2: B8 05 00 00 00     mov         eax,5
+  000047E7: E8 36 B9 FF FF     call        00000122
+  000047EC: BA 07 00 00 00     mov         edx,7
+  000047F1: B8 FA 03 00 00     mov         eax,3FAh
+  000047F6: E8 4D 97 02 00     call        0002DF48
+  000047FB: BA 09 00 00 00     mov         edx,9
+  00004800: B8 FC 03 00 00     mov         eax,3FCh
+  00004805: E8 3E 97 02 00     call        0002DF48
+  0000480A: 30 DB              xor         bl,bl
+  0000480C: EB 02              jmp         00004810
+  0000480E: FE C3              inc         bl
+  00004810: 38 FB              cmp         bl,bh
+  00004812: 73 3E              jae         00004852
+  00004814: 31 C0              xor         eax,eax
+  00004816: 88 D8              mov         al,bl
+  00004818: 31 D2              xor         edx,edx
+  0000481A: 8A 90 C0 B7 00 00  mov         dl,byte ptr [eax+0000B7C0h]
+  00004820: B8 F8 03 00 00     mov         eax,3F8h
+  00004825: E8 1E 97 02 00     call        0002DF48
+  0000482A: B8 FD 03 00 00     mov         eax,3FDh
+  0000482F: E8 1E 97 02 00     call        0002DF52
+  00004834: A8 40              test        al,40h
+  00004836: 74 F2              je          0000482A
+  00004838: B8 FD 03 00 00     mov         eax,3FDh
+  0000483D: E8 10 97 02 00     call        0002DF52
+  00004842: A8 01              test        al,1
+  00004844: 74 C8              je          0000480E
+  00004846: B8 F8 03 00 00     mov         eax,3F8h
+  0000484B: E8 02 97 02 00     call        0002DF52
+  00004850: EB BC              jmp         0000480E
+  00004852: BA 07 00 00 00     mov         edx,7
+  00004857: B8 FA 03 00 00     mov         eax,3FAh
+  0000485C: E8 E7 96 02 00     call        0002DF48
+  00004861: BA 0B 00 00 00     mov         edx,0Bh
+  00004866: B8 FC 03 00 00     mov         eax,3FCh
+  0000486B: E8 D8 96 02 00     call        0002DF48
+
+--- Datos de inicio: codigo 048BD..0496C ---
+  000048BD: 3D 82 00 00 00     cmp         eax,82h
+  000048C2: 0F 85 A4 00 00 00  jne         0000496C
+  000048C8: 31 D2              xor         edx,edx
+  000048CA: 8A 15 A3 B6 00 00  mov         dl,byte ptr ds:[0000B6A3h]
+  000048D0: 83 EA 30           sub         edx,30h
+  000048D3: 89 D1              mov         ecx,edx
+  000048D5: C1 E1 02           shl         ecx,2
+  000048D8: 29 D1              sub         ecx,edx
+  000048DA: C1 E1 03           shl         ecx,3
+  000048DD: 01 D1              add         ecx,edx
+  000048DF: C1 E1 02           shl         ecx,2
+  000048E2: 31 C0              xor         eax,eax
+  000048E4: A0 A4 B6 00 00     mov         al,byte ptr ds:[0000B6A4h]
+  000048E9: 8D 50 D0           lea         edx,[eax-30h]
+  000048EC: 89 D0              mov         eax,edx
+  000048EE: C1 E0 02           shl         eax,2
+  000048F1: 01 D0              add         eax,edx
+  000048F3: 01 C0              add         eax,eax
+  000048F5: 01 C1              add         ecx,eax
+  000048F7: 31 C0              xor         eax,eax
+  000048F9: A0 A5 B6 00 00     mov         al,byte ptr ds:[0000B6A5h]
+  000048FE: 83 E8 30           sub         eax,30h
+  00004901: 01 C1              add         ecx,eax
+  00004903: 89 0D 40 B0 01 00  mov         dword ptr ds:[0001B040h],ecx
+  00004909: 31 C0              xor         eax,eax
+  0000490B: A0 A6 B6 00 00     mov         al,byte ptr ds:[0000B6A6h]
+  00004910: 8D 50 D0           lea         edx,[eax-30h]
+  00004913: 89 D1              mov         ecx,edx
+  00004915: C1 E1 02           shl         ecx,2
+  00004918: 29 D1              sub         ecx,edx
+  0000491A: C1 E1 03           shl         ecx,3
+  0000491D: 01 D1              add         ecx,edx
+  0000491F: C1 E1 02           shl         ecx,2
+  00004922: 31 C0              xor         eax,eax
+  00004924: A0 A7 B6 00 00     mov         al,byte ptr ds:[0000B6A7h]
+  00004929: 8D 50 D0           lea         edx,[eax-30h]
+  0000492C: 89 D0              mov         eax,edx
+  0000492E: C1 E0 02           shl         eax,2
+  00004931: 01 D0              add         eax,edx
+  00004933: 01 C0              add         eax,eax
+  00004935: 01 C1              add         ecx,eax
+  00004937: 31 C0              xor         eax,eax
+  00004939: A0 A8 B6 00 00     mov         al,byte ptr ds:[0000B6A8h]
+  0000493E: 83 E8 30           sub         eax,30h
+  00004941: 01 C1              add         ecx,eax
+  00004943: 89 0D 44 B0 01 00  mov         dword ptr ds:[0001B044h],ecx
+  00004949: 31 C0              xor         eax,eax
+  0000494B: A0 A9 B6 00 00     mov         al,byte ptr ds:[0000B6A9h]
+  00004950: 83 E8 30           sub         eax,30h
+  00004953: A3 48 B0 01 00     mov         dword ptr ds:[0001B048h],eax
+  00004958: 31 C0              xor         eax,eax
+  0000495A: A0 AA B6 00 00     mov         al,byte ptr ds:[0000B6AAh]
+  0000495F: 83 E8 30           sub         eax,30h
+  00004962: A3 50 B0 01 00     mov         dword ptr ds:[0001B050h],eax
+  00004967: E9 30 09 00 00     jmp         0000529C
+
+--- Equipo y jugador 1: codigo 049AF..04AA6 ---
+  000049AF: 3D 8C 00 00 00     cmp         eax,8Ch
+  000049B4: 75 3E              jne         000049F4
+  000049B6: 83 3D B4 B0 01 00  cmp         dword ptr ds:[0001B0B4h],1
+            01
+  000049BD: 0F 84 D9 08 00 00  je          0000529C
+  000049C3: 30 DB              xor         bl,bl
+  000049C5: EB 0E              jmp         000049D5
+  000049C7: 8A 90 A3 B6 00 00  mov         dl,byte ptr [eax+0000B6A3h]
+  000049CD: 88 90 64 B9 00 00  mov         byte ptr [eax+0000B964h],dl
+  000049D3: FE C3              inc         bl
+  000049D5: 31 C0              xor         eax,eax
+  000049D7: 88 D8              mov         al,bl
+  000049D9: 83 F8 09           cmp         eax,9
+  000049DC: 0F 8D BA 08 00 00  jge         0000529C
+  000049E2: 31 D2              xor         edx,edx
+  000049E4: 8A 90 A4 B6 00 00  mov         dl,byte ptr [eax+0000B6A4h]
+  000049EA: 83 FA 04           cmp         edx,4
+  000049ED: 75 D8              jne         000049C7
+  000049EF: E9 A8 08 00 00     jmp         0000529C
+  000049F4: 3D 8D 00 00 00     cmp         eax,8Dh
+  000049F9: 0F 85 A7 00 00 00  jne         00004AA6
+  000049FF: 83 3D B4 B0 01 00  cmp         dword ptr ds:[0001B0B4h],1
+            01
+  00004A06: 0F 84 90 08 00 00  je          0000529C
+  00004A0C: C6 05 EC AA 01 00  mov         byte ptr ds:[0001AAECh],1
+            01
+  00004A13: 31 F6              xor         esi,esi
+  00004A15: 89 35 5C C4 00 00  mov         dword ptr ds:[0000C45Ch],esi
+  00004A1B: 30 DB              xor         bl,bl
+  00004A1D: FF 05 88 60 00 00  inc         dword ptr ds:[00006088h]
+  00004A23: EB 0A              jmp         00004A2F
+  00004A25: 30 ED              xor         ch,ch
+  00004A27: 88 A8 50 C4 00 00  mov         byte ptr [eax+0000C450h],ch
+  00004A2D: FE C3              inc         bl
+  00004A2F: 31 C0              xor         eax,eax
+  00004A31: 88 D8              mov         al,bl
+  00004A33: 83 F8 0A           cmp         eax,0Ah
+  00004A36: 7C ED              jl          00004A25
+  00004A38: B3 03              mov         bl,3
+  00004A3A: 31 C0              xor         eax,eax
+  00004A3C: 88 D8              mov         al,bl
+  00004A3E: 31 D2              xor         edx,edx
+  00004A40: 8A 90 A4 B6 00 00  mov         dl,byte ptr [eax+0000B6A4h]
+  00004A46: 83 FA 04           cmp         edx,4
+  00004A49: 74 10              je          00004A5B
+  00004A4B: 8A 90 A0 B6 00 00  mov         dl,byte ptr [eax+0000B6A0h]
+  00004A51: 88 90 4D C4 00 00  mov         byte ptr [eax+0000C44Dh],dl
+  00004A57: FE C3              inc         bl
+  00004A59: EB DF              jmp         00004A3A
+  00004A5B: 31 C9              xor         ecx,ecx
+  00004A5D: 8A 88 A1 B6 00 00  mov         cl,byte ptr [eax+0000B6A1h]
+  00004A63: 83 E9 30           sub         ecx,30h
+  00004A66: 89 CE              mov         esi,ecx
+  00004A68: C1 E6 02           shl         esi,2
+  00004A6B: 01 CE              add         esi,ecx
+  00004A6D: 01 F6              add         esi,esi
+  00004A6F: 31 D2              xor         edx,edx
+  00004A71: 8A 90 A0 B6 00 00  mov         dl,byte ptr [eax+0000B6A0h]
+  00004A77: 8D 4A D0           lea         ecx,[edx-30h]
+  00004A7A: 89 CA              mov         edx,ecx
+  00004A7C: C1 E2 02           shl         edx,2
+  00004A7F: 29 CA              sub         edx,ecx
+  00004A81: C1 E2 03           shl         edx,3
+  00004A84: 01 CA              add         edx,ecx
+  00004A86: C1 E2 02           shl         edx,2
+  00004A89: 01 F2              add         edx,esi
+  00004A8B: 8A 80 A2 B6 00 00  mov         al,byte ptr [eax+0000B6A2h]
+  00004A91: 25 FF 00 00 00     and         eax,0FFh
+  00004A96: 83 E8 30           sub         eax,30h
+  00004A99: 01 C2              add         edx,eax
+  00004A9B: 89 15 5C C4 00 00  mov         dword ptr ds:[0000C45Ch],edx
+  00004AA1: E9 F6 07 00 00     jmp         0000529C
+
+--- Cambio a entrenamiento: codigo 00ABF..00B2B ---
+  00000ABF: A1 18 AF 01 00     mov         eax,dword ptr ds:[0001AF18h]
+  00000AC4: 83 F8 02           cmp         eax,2
+  00000AC7: 75 59              jne         00000B22
+  00000AC9: A1 8C B4 00 00     mov         eax,dword ptr ds:[0000B48Ch]
+  00000ACE: E8 87 D4 02 00     call        0002DF5A
+  00000AD3: A1 90 B4 00 00     mov         eax,dword ptr ds:[0000B490h]
+  00000AD8: E8 7D D4 02 00     call        0002DF5A
+  00000ADD: A1 08 AB 01 00     mov         eax,dword ptr ds:[0001AB08h]
+  00000AE2: E8 73 D4 02 00     call        0002DF5A
+  00000AE7: 30 F6              xor         dh,dh
+  00000AE9: 88 35 F0 AA 01 00  mov         byte ptr ds:[0001AAF0h],dh
+  00000AEF: A1 14 AB 01 00     mov         eax,dword ptr ds:[0001AB14h]
+  00000AF4: E8 61 D4 02 00     call        0002DF5A
+  00000AF9: E8 56 07 00 00     call        00001254
+  00000AFE: 8B 0D C8 43 00 00  mov         ecx,dword ptr ds:[000043C8h]
+  00000B04: A1 D4 43 00 00     mov         eax,dword ptr ds:[000043D4h]
+  00000B09: BB 9D 02 00 00     mov         ebx,29Dh
+  00000B0E: BA 9F 02 00 00     mov         edx,29Fh
+  00000B13: E8 0E 67 00 00     call        00007226
+  00000B18: E8 89 47 00 00     call        000052A6
+  00000B1D: E9 EB 01 00 00     jmp         00000D0D
+  00000B22: 83 F8 01           cmp         eax,1
+  00000B25: 0F 85 E2 01 00 00  jne         00000D0D
+
+--- Recepcion COM2: codigo 03760..03962 ---
+  00003760: 68 20 00 00 00     push        20h
+  00003765: E8 A2 97 02 00     call        0002CF0C
+  0000376A: 53                 push        ebx
+  0000376B: 51                 push        ecx
+  0000376C: 52                 push        edx
+  0000376D: 83 EC 10           sub         esp,10h
+  00003770: 31 D2              xor         edx,edx
+  00003772: B8 05 00 00 00     mov         eax,5
+  00003777: E8 71 A7 02 00     call        0002DEED
+  0000377C: B8 FD 02 00 00     mov         eax,2FDh
+  00003781: E8 CC A7 02 00     call        0002DF52
+  00003786: A8 01              test        al,1
+  00003788: 0F 84 D4 00 00 00  je          00003862
+  0000378E: 30 DB              xor         bl,bl
+  00003790: 89 D0              mov         eax,edx
+  00003792: 42                 inc         edx
+  00003793: 3D 30 75 00 00     cmp         eax,7530h
+  00003798: 0F 8D C4 00 00 00  jge         00003862
+  0000379E: B8 FD 02 00 00     mov         eax,2FDh
+  000037A3: E8 AA A7 02 00     call        0002DF52
+  000037A8: A8 01              test        al,1
+  000037AA: 74 E4              je          00003790
+  000037AC: B8 F8 02 00 00     mov         eax,2F8h
+  000037B1: E8 9C A7 02 00     call        0002DF52
+  000037B6: 88 C2              mov         dl,al
+  000037B8: 31 C9              xor         ecx,ecx
+  000037BA: 88 C1              mov         cl,al
+  000037BC: 83 F9 1B           cmp         ecx,1Bh
+  000037BF: 75 06              jne         000037C7
+  000037C1: 30 FF              xor         bh,bh
+  000037C3: 30 DB              xor         bl,bl
+  000037C5: EB 07              jmp         000037CE
+  000037C7: 83 F9 04           cmp         ecx,4
+  000037CA: 74 02              je          000037CE
+  000037CC: 00 C7              add         bh,al
+  000037CE: 31 C0              xor         eax,eax
+  000037D0: 88 D8              mov         al,bl
+  000037D2: 88 14 04           mov         byte ptr [esp+eax],dl
+  000037D5: 31 C0              xor         eax,eax
+  000037D7: 88 D0              mov         al,dl
+  000037D9: 83 F8 04           cmp         eax,4
+  000037DC: 75 6E              jne         0000384C
+  000037DE: 31 C0              xor         eax,eax
+  000037E0: 8A 44 24 01        mov         al,byte ptr [esp+1]
+  000037E4: 3D 91 00 00 00     cmp         eax,91h
+  000037E9: 0F 85 73 00 00 00  jne         00003862
+  000037EF: F6 C7 7F           test        bh,7Fh
+  000037F2: 0F 85 6A 00 00 00  jne         00003862
+  000037F8: C6 05 6A B0 01 00  mov         byte ptr ds:[0001B06Ah],1
+            01
+  000037FF: 31 D2              xor         edx,edx
+  00003801: 8A 04 14           mov         al,byte ptr [esp+edx]
+  00003804: 88 82 70 B6 00 00  mov         byte ptr [edx+0000B670h],al
+  0000380A: 42                 inc         edx
+  0000380B: 83 FA 0F           cmp         edx,0Fh
+  0000380E: 72 F1              jb          00003801
+  00003810: A0 75 B6 00 00     mov         al,byte ptr ds:[0000B675h]
+  00003815: 24 01              and         al,1
+  00003817: A2 A4 B0 01 00     mov         byte ptr ds:[0001B0A4h],al
+  0000381C: A0 75 B6 00 00     mov         al,byte ptr ds:[0000B675h]
+  00003821: 24 08              and         al,8
+  00003823: A2 A5 B0 01 00     mov         byte ptr ds:[0001B0A5h],al
+  00003828: F6 05 75 B6 00 00  test        byte ptr ds:[0000B675h],2
+            02
+  0000382F: 75 04              jne         00003835
+  00003831: B0 01              mov         al,1
+  00003833: EB 02              jmp         00003837
+  00003835: 30 C0              xor         al,al
+  00003837: A2 6B B0 01 00     mov         byte ptr ds:[0001B06Bh],al
+  0000383C: A0 76 B6 00 00     mov         al,byte ptr ds:[0000B676h]
+  00003841: 24 01              and         al,1
+  00003843: A2 6D B0 01 00     mov         byte ptr ds:[0001B06Dh],al
+  00003848: B0 01              mov         al,1
+  0000384A: EB 18              jmp         00003864
+  0000384C: FE C3              inc         bl
+  0000384E: 31 C0              xor         eax,eax
+  00003850: 88 D8              mov         al,bl
+  00003852: 83 F8 0F           cmp         eax,0Fh
+  00003855: 72 04              jb          0000385B
+  00003857: 30 D8              xor         al,bl
+  00003859: EB 09              jmp         00003864
+  0000385B: 31 D2              xor         edx,edx
+  0000385D: E9 2E FF FF FF     jmp         00003790
+  00003862: 30 C0              xor         al,al
+  00003864: 83 C4 10           add         esp,10h
+  00003867: 5A                 pop         edx
+  00003868: 59                 pop         ecx
+  00003869: 5B                 pop         ebx
+  0000386A: C3                 ret
+  0000386B: 68 1C 00 00 00     push        1Ch
+  00003870: E8 97 96 02 00     call        0002CF0C
+  00003875: 53                 push        ebx
+  00003876: 51                 push        ecx
+  00003877: 52                 push        edx
+  00003878: 83 EC 0C           sub         esp,0Ch
+  0000387B: 31 C9              xor         ecx,ecx
+  0000387D: 30 E4              xor         ah,ah
+  0000387F: 88 25 69 B0 01 00  mov         byte ptr ds:[0001B069h],ah
+  00003885: B8 0A 00 00 00     mov         eax,0Ah
+  0000388A: E8 5E A6 02 00     call        0002DEED
+  0000388F: BB 10 00 00 00     mov         ebx,10h
+  00003894: 31 D2              xor         edx,edx
+  00003896: B8 70 B0 01 00     mov         eax,1B070h
+  0000389B: E8 39 C2 02 00     call        0002FAD9
+  000038A0: B8 FD 02 00 00     mov         eax,2FDh
+  000038A5: E8 A8 A6 02 00     call        0002DF52
+  000038AA: A8 01              test        al,1
+  000038AC: 0F 84 A9 00 00 00  je          0000395B
+  000038B2: 30 D2              xor         dl,dl
+  000038B4: 89 C8              mov         eax,ecx
+  000038B6: 41                 inc         ecx
+  000038B7: 3D 30 75 00 00     cmp         eax,7530h
+  000038BC: 0F 8D 99 00 00 00  jge         0000395B
+  000038C2: B8 FD 02 00 00     mov         eax,2FDh
+  000038C7: E8 86 A6 02 00     call        0002DF52
+  000038CC: A8 01              test        al,1
+  000038CE: 74 E4              je          000038B4
+  000038D0: B8 F8 02 00 00     mov         eax,2F8h
+  000038D5: E8 78 A6 02 00     call        0002DF52
+  000038DA: 88 C1              mov         cl,al
+  000038DC: 31 DB              xor         ebx,ebx
+  000038DE: 88 C3              mov         bl,al
+  000038E0: 83 FB 1B           cmp         ebx,1Bh
+  000038E3: 75 0A              jne         000038EF
+  000038E5: 30 C3              xor         bl,al
+  000038E7: 88 5C 24 08        mov         byte ptr [esp+8],bl
+  000038EB: 30 D2              xor         dl,dl
+  000038ED: EB 09              jmp         000038F8
+  000038EF: 83 FB 04           cmp         ebx,4
+  000038F2: 74 04              je          000038F8
+  000038F4: 00 44 24 08        add         byte ptr [esp+8],al
+  000038F8: 31 C0              xor         eax,eax
+  000038FA: 88 D0              mov         al,dl
+  000038FC: 88 0C 04           mov         byte ptr [esp+eax],cl
+  000038FF: 31 C0              xor         eax,eax
+  00003901: 88 C8              mov         al,cl
+  00003903: 83 F8 04           cmp         eax,4
+  00003906: 75 41              jne         00003949
+  00003908: 31 C0              xor         eax,eax
+  0000390A: 8A 44 24 01        mov         al,byte ptr [esp+1]
+  0000390E: 3D A5 00 00 00     cmp         eax,0A5h
+  00003913: 75 46              jne         0000395B
+  00003915: F6 44 24 08 7F     test        byte ptr [esp+8],7Fh
+  0000391A: 75 3F              jne         0000395B
+  0000391C: 31 C0              xor         eax,eax
+  0000391E: 8A 44 24 02        mov         al,byte ptr [esp+2]
+  00003922: 3D 81 00 00 00     cmp         eax,81h
+  00003927: 75 09              jne         00003932
+  00003929: 24 01              and         al,1
+  0000392B: A2 69 B0 01 00     mov         byte ptr ds:[0001B069h],al
+  00003930: EB 29              jmp         0000395B
+  00003932: 3D 82 00 00 00     cmp         eax,82h
+  00003937: 74 07              je          00003940
+  00003939: 3D 83 00 00 00     cmp         eax,83h
+  0000393E: 75 1B              jne         0000395B
+  00003940: C6 05 6C B0 01 00  mov         byte ptr ds:[0001B06Ch],1
+            01
+  00003947: EB 12              jmp         0000395B
+  00003949: FE C2              inc         dl
+  0000394B: 31 C0              xor         eax,eax
+  0000394D: 88 D0              mov         al,dl
+  0000394F: 83 F8 05           cmp         eax,5
+  00003952: 73 07              jae         0000395B
+  00003954: 31 C9              xor         ecx,ecx
+  00003956: E9 59 FF FF FF     jmp         000038B4
+  0000395B: 83 C4 0C           add         esp,0Ch
+  0000395E: 5A                 pop         edx
+  0000395F: 59                 pop         ecx
+  00003960: 5B                 pop         ebx
+  00003961: C3                 ret
